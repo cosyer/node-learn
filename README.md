@@ -3,6 +3,7 @@
 ## 目录
 - Lesson1 - [搭建Node.js开发环境](/lesson1)
 - Lesson2 - [了解并使用Http模块](/lesson2)
+- Lesson3 - [Node模块与npm](/lesson3)
 
 ## Node相关入门资料
 
@@ -80,7 +81,7 @@
 #### Markdown
 
 - [markdown语法说明](http://www.appinn.com/markdown/)
-- [Markdown 入门参考](https://github.com/LearnShare/Learning-Markdown/blob/master/README.md)
+- [Markdown 入门参考](https://github.com/cosyer/markdown)
 
 ##### markdown编辑器推荐
 
