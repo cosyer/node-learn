@@ -24,15 +24,15 @@ function get() {
 
   async.eachSeries(
     url_list,
-    function(arr_url, callback) {
+    function (arr_url, callback) {
       console.log("正在抓取" + arr_url + "的数据...");
-      request(arr_url, function(err, data) {
+      request(arr_url, function (err, data) {
         if (err) {
           return console.error(err);
         }
         // 通过cheerio的load方法解析整个文档，就是html页面所有内容，可以通过console.log($.html());在控制台查看
         var $ = cheerio.load(data.body.toString());
-        $(".tptx_ytgt .tptx_ytgt_4").each(function() {
+        $(".tptx_ytgt .tptx_ytgt_4").each(function () {
           var $me = $(this);
           //解析船公司和船字段
           var arr1 = analyStr($me.find(".tptx_ytgt_2b a").text());
@@ -45,10 +45,7 @@ function get() {
               $me.find(".tptx_jcyj_2ab_1 ul li:first-child").text()
             ), // 航线
             txtStartDate: analyStart(
-              $me
-                .find(".tptx_jcyj_2ab_1 li")
-                .eq(1)
-                .text(),
+              $me.find(".tptx_jcyj_2ab_1 li").eq(1).text(),
               $me.find(".tptx_jcyj_2ab_1 span").text()
             ),
             numDay: Number(arr2[1]), // 天数
@@ -56,21 +53,21 @@ function get() {
             numPrice: analyPrice(
               $me.find(".tptx_jcyj_2ac .tptx_jcyj_2ac_1").text()
             ), // 价格
-            txtUrl: domain + $me.find(".tptx_ytgt_2b a").attr("href") //详情url
+            txtUrl: domain + $me.find(".tptx_ytgt_2b a").attr("href"), //详情url
           };
           list.push(item);
         });
         callback(err, list);
       });
     },
-    function(err) {
+    function (err) {
       if (err) {
         return console.error(err.stack);
       }
       /*写入数据库*/
       async.eachSeries(
         list,
-        function(record, callback) {
+        function (record, callback) {
           console.log("正在写入" + record.txtStartDate + "的数据...");
           var str = "";
           for (var i in record) {
@@ -85,18 +82,18 @@ function get() {
             ")";
           dbUtil
             .EXECUTE(sql)
-            .then(res => {
+            .then((res) => {
               console.log("res==>", res);
               // 受影响的行数
               if (res.affectedRows == 1) {
                 callback(err);
               }
             })
-            .catch(data => {
+            .catch((data) => {
               console.log("data==>", data);
             });
         },
-        function(err) {
+        function (err) {
           if (err) {
             return console.error(err.stack);
           }
@@ -175,12 +172,12 @@ get();
 
 /*处理乱码*/
 function reconvert(str) {
-  str = str.replace(/(\\u)(\w{4})/gi, function($0) {
+  str = str.replace(/(\\u)(\w{4})/gi, function ($0) {
     return String.fromCharCode(
       parseInt(escape($0).replace(/(%5Cu)(\w{4})/g, "$2"), 16)
     );
   });
-  str = str.replace(/(&#x)(\w{4});/gi, function($0) {
+  str = str.replace(/(&#x)(\w{4});/gi, function ($0) {
     return String.fromCharCode(
       parseInt(escape($0).replace(/(%26%23x)(\w{4})(%3B)/g, "$2"), 16)
     );

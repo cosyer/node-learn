@@ -16,7 +16,7 @@ let index = 4;
 switch (index) {
   // 发送http请求
   case 0:
-    request("http://www.baidu.com", function(error, response, body) {
+    request("http://www.baidu.com", function (error, response, body) {
       if (!error && response.statusCode == 200) {
         console.log(body); // response.body
       }
@@ -25,7 +25,7 @@ switch (index) {
 
   // cheerio解析dom
   case 1:
-    request("http://www.baidu.com", function(error, response, body) {
+    request("http://www.baidu.com", function (error, response, body) {
       if (!error && response.statusCode == 200) {
         var $ = cheerio.load(body.toString());
         console.log($("title").text());
@@ -37,12 +37,12 @@ switch (index) {
   case 2:
     async.eachSeries(
       objs,
-      function(obj, callback) {
-        doSomething(obj, function() {
+      function (obj, callback) {
+        doSomething(obj, function () {
           callback("err");
         });
       },
-      function(err) {
+      function (err) {
         console.log("err is:" + err);
       }
     );
@@ -55,11 +55,11 @@ switch (index) {
       host: "localhost",
       user: "root",
       password: "root",
-      database: "crawl"
+      database: "crawl",
     });
     connection.connect();
     // 查询
-    connection.query("SELECT * FROM tb_crawl_boat_ticket", function(
+    connection.query("SELECT * FROM tb_crawl_boat_ticket", function (
       err,
       rows,
       fields
@@ -80,7 +80,7 @@ switch (index) {
       times.push(i);
     }
     rule.second = times;
-    schedule.scheduleJob(rule, function() {
+    schedule.scheduleJob(rule, function () {
       console.log("开始执行" + new Date());
     });
     break;

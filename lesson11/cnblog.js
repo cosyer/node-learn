@@ -30,7 +30,7 @@ for (var i = 1; i <= pageNum; i++) {
 // 抓取昵称、入园年龄、粉丝数、关注数
 function personInfo(url) {
   var infoArray = {};
-  superagent.get(url).end(function(err, ares) {
+  superagent.get(url).end(function (err, ares) {
     if (err) {
       console.log(err);
       return;
@@ -45,12 +45,7 @@ function personInfo(url) {
 
     // 小概率异常抛错
     try {
-      age =
-        "20" +
-        info
-          .eq(1)
-          .attr("title")
-          .split("20")[1];
+      age = "20" + info.eq(1).attr("title").split("20")[1];
     } catch (err) {
       console.log(err);
       age = "2012-11-06";
@@ -90,7 +85,7 @@ function start() {
     // 设置字符编码(去掉中文会乱码)
     res.writeHead(200, { "Content-Type": "text/html;charset=utf-8" });
     // 当所有 'BlogArticleHtml' 事件完成后的回调触发下面事件
-    ep.after("BlogArticleHtml", pageUrls.length * 20, function(articleUrls) {
+    ep.after("BlogArticleHtml", pageUrls.length * 20, function (articleUrls) {
       // 获取 BlogPageUrl 页面内所有文章链接
       for (var i = 0; i < articleUrls.length; i++) {
         res.write(articleUrls[i] + "<br/>");
@@ -104,7 +99,7 @@ function start() {
 
       //控制并发数
       var curCount = 0;
-      var reptileMove = function(url, callback) {
+      var reptileMove = function (url, callback) {
         //延迟毫秒数
         var delay = parseInt((Math.random() * 30000000) % 1000, 10);
         curCount++;
@@ -116,7 +111,7 @@ function start() {
           "，耗时" + delay + "毫秒"
         );
 
-        superagent.get(url).end(function(err, sres) {
+        superagent.get(url).end(function (err, sres) {
           // 常规的错误处理
           if (err) {
             console.log(err);
@@ -159,7 +154,7 @@ function start() {
           }
         });
 
-        setTimeout(function() {
+        setTimeout(function () {
           curCount--;
           callback(null, url + "Call back content");
         }, delay);
@@ -171,10 +166,10 @@ function start() {
       async.mapLimit(
         articleUrls,
         5,
-        function(url, callback) {
+        function (url, callback) {
           reptileMove(url, callback);
         },
-        function(err, result) {
+        function (err, result) {
           endDate = new Date();
 
           console.log("final:");
@@ -237,8 +232,8 @@ function start() {
     });
 
     // 轮询 所有文章列表页
-    pageUrls.forEach(function(pageUrl) {
-      superagent.get(pageUrl).end(function(err, pres) {
+    pageUrls.forEach(function (pageUrl) {
+      superagent.get(pageUrl).end(function (err, pres) {
         console.log("fetch " + pageUrl + " successful");
         res.write("fetch " + pageUrl + " successful<br/>");
         // 常规的错误处理

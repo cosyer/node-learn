@@ -14,45 +14,36 @@ function fetchPage(x) {
 function startRequest(x) {
   //采用http模块向服务器发起一次get请求
   http
-    .get(x, function(res) {
+    .get(x, function (res) {
       var html = ""; //用来存储请求网页的整个html内容
       var titles = [];
       res.setEncoding("utf-8"); //防止中文乱码
       //监听data事件，每次取一块数据
-      res.on("data", function(chunk) {
+      res.on("data", function (chunk) {
         html += chunk;
       });
       //监听end事件，如果整个网页内容的html都获取完毕，就执行回调函数
-      res.on("end", function() {
+      res.on("end", function () {
         var $ = cheerio.load(html); //采用cheerio模块解析html
 
-        var time = $(".article-info a:first-child")
-          .next()
-          .text()
-          .trim();
+        var time = $(".article-info a:first-child").next().text().trim();
 
         var news_item = {
           //获取文章的标题
-          title: $("div.article-title a")
-            .text()
-            .trim(),
+          title: $("div.article-title a").text().trim(),
           //获取文章发布的时间
           Time: time,
           //获取当前文章的url
           link:
             "http://www.ss.pku.edu.cn" + $("div.article-title a").attr("href"),
           //获取供稿单位
-          author: $("[title=供稿]")
-            .text()
-            .trim(),
+          author: $("[title=供稿]").text().trim(),
           //i是用来判断获取了多少篇文章
-          i: (i = i + 1)
+          i: (i = i + 1),
         };
 
         console.log(news_item); //打印新闻信息
-        var news_title = $("div.article-title a")
-          .text()
-          .trim();
+        var news_title = $("div.article-title a").text().trim();
 
         savedContent($, news_title); //存储每篇文章的内容及文章标题
 
@@ -68,13 +59,13 @@ function startRequest(x) {
         }
       });
     })
-    .on("error", function(err) {
+    .on("error", function (err) {
       console.log(err);
     });
 }
 //该函数的作用：在本地存储所爬取的新闻内容资源
 function savedContent($, news_title) {
-  $(".article-content p").each(function(index, item) {
+  $(".article-content p").each(function (index, item) {
     var x = $(this).text();
 
     var y = x.substring(0, 2).trim();
@@ -82,7 +73,9 @@ function savedContent($, news_title) {
     if (y == "") {
       x = x + "\n";
       //将新闻文本内容一段一段添加到/data文件夹下，并用新闻的标题来命名文件
-      fs.appendFile("./data/" + news_title + ".txt", x, "utf-8", function(err) {
+      fs.appendFile("./data/" + news_title + ".txt", x, "utf-8", function (
+        err
+      ) {
         if (err) {
           console.log(err);
         }
@@ -92,12 +85,8 @@ function savedContent($, news_title) {
 }
 //该函数的作用：在本地存储所爬取到的图片资源
 function savedImg($, news_title) {
-  $(".article-content img").each(function(index, item) {
-    var img_title = $(this)
-      .parent()
-      .next()
-      .text()
-      .trim(); //获取图片的标题
+  $(".article-content img").each(function (index, item) {
+    var img_title = $(this).parent().next().text().trim(); //获取图片的标题
     if (img_title.length > 35 || img_title == "") {
       img_title = "Null";
     }
@@ -106,7 +95,7 @@ function savedImg($, news_title) {
     var img_src = "http://www.ss.pku.edu.cn" + $(this).attr("src"); //获取图片的url
 
     //采用request模块，向服务器发起一次请求，获取图片资源
-    request.head(img_src, function(err, res, body) {
+    request.head(img_src, function (err, res, body) {
       if (err) {
         console.log(err);
       }
