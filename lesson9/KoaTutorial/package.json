@@ -10,7 +10,7 @@
     "koa",
     "nodejs"
   ],
-  "author": "Liu Xing",
+  "author": "cosyer",
   "license": "ISC",
   "dependencies": {
     "ejs": "^2.5.7",

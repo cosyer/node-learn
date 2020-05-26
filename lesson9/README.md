@@ -116,7 +116,7 @@ app.use(router.routes(), router.allowedMethods())
 app.listen(3000);
 ```
 
-运行这个 demo，我们将看到与上栗一样的效果。在这儿我们使用到了第三方中间件。
+运行这个 demo，我们将看到与上述一样的效果。在这儿我们使用到了第三方中间件。
 
 ## 三、中间件
 
@@ -154,11 +154,15 @@ app.use(async ctx => {
 app.listen(3000);
 ```
 
-上面的执行顺序就是：请求 ==> x-response-time中间件 ==> logger中间件 ==> 响应中间件 ==> logger中间件 ==> response-time中间件 ==> 响应。 通过这个顺序我们可以发现这是个栈结构以"先进后出"（first-in-last-out）的顺序执行。Koa已经有了很多好用的中间件*([https://github.com/koajs/koa/wiki#middleware](https://github.com/koajs/koa/wiki#middleware))你需要的常用功能基本上都有人实现了*
+上面的执行顺序就是：请求 ==> x-response-time中间件 ==> logger中间件 ==> 响应中间件 ==> logger中间件 ==> response-time中间件 ==> 响应。 通过这个顺序我们可以发现这是个栈结构以"先进后出"（first-in-last-out）的顺序执行
+
+*([https://github.com/koajs/koa/wiki#middleware](https://github.com/koajs/koa/wiki#middleware))你需要的常用功能基本上都有人实现了*
 
 ## 四、模板引擎
 
-在实际开发中，返回给用户的网页往往都写成模板文件。 Koa 先读取模板文件，然后将这个模板返回给用户，这事我们就需要使用模板引擎了，关于Koa的模版引擎，我们只需要安装koa模板使用中间件[koa-views](https://github.com/queckezz/koa-views) 然后在下载你喜欢的模板引擎*([支持列表](https://github.com/tj/consolidate.js#supported-template-engines))*便可以愉快的使用了。如安装使用[ejs](https://github.com/mde/ejs)
+在实际开发中，返回给用户的网页往往都写成模板文件。 Koa 先读取模板文件，然后将这个模板返回给用户，这时我们就需要使用模板引擎了，关于Koa的模版引擎，我们只需要安装koa模板使用中间件[koa-views](https://github.com/queckezz/koa-views) 然后在下载你喜欢的模板引擎
+
+*([支持列表](https://github.com/tj/consolidate.js#supported-template-engines))*便可以愉快地使用了。如安装使用[ejs](https://github.com/mde/ejs)
 
 ```bash
 # 安装koa模板使用中间件
