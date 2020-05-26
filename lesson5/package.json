@@ -1,0 +1,14 @@
+{
+  "name": "lesson5",
+  "version": "1.0.0",
+  "description": "> 流（stream）在 Node.js 中是处理流数据的抽象接口（abstract interface）。 `stream` 模块提供了基础的 API 。使用这些 API 可以很容易地来构建实现流接口的对象。\r >\r > Node.js 提供了多种流对象。 例如， [HTTP 请求](http://nodejs.cn/api/http.html#http_class_http_incomingmessage) 和 [`process.stdout`](http://nodejs.cn/api/process.html#process_process_stdout) 就都是流的实例。流可以是可读的、可写的，或是可读写的。所有的流都是 [`EventEmitter`](http://nodejs.cn/api/events.html#events_class_eventemitter) *(Node事件机制将在后续讲解，可以先自行了解)*的实例。",
+  "main": "Stream.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "zlib": "^1.0.5"
+  }
+}
