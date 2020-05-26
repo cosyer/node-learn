@@ -184,8 +184,6 @@ Model.findByIdAndUpdate(id, [update], [options], [callback])  // 根据id查找�
 
 UI采用了漂亮的[UIkit3](http://www.getuikit.net/v3/)
 
-![Node图书管理](http://ommpd2lnj.bkt.clouddn.com/librarian.png)
-
 传送门： [Github](https://github.com/ogilhinn/node-abc/tree/master/lesson8) 
 
 *可以去github拉下来，然后`npm install ` 然后`node index.js`即可跑起来*
