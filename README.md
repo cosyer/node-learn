@@ -4,6 +4,7 @@
 - Lesson1 - [搭建Node.js开发环境](/lesson1)
 - Lesson2 - [了解并使用Http模块](/lesson2)
 - Lesson3 - [Node模块与npm](/lesson3)
+- Lesson4 - [搭建静态文件服务器](/lesson4)
 
 ## Node相关入门资料
 
@@ -25,14 +26,16 @@
 
 #### express
 - [express](http://www.expressjs.com.cn/)
+
 #### koa
+
 - [koa](http://koajs.com/)
 - [koa实战](http://book.apebook.org/minghe/koa-action/index.html)
+
 #### thinkjs
 - [thinkjs](https://thinkjs.org/)
 
 #### websocket
-
 - [WebSocket 教程](http://www.ruanyifeng.com/blog/2017/05/websocket.html?utm_source=tuicool&utm_medium=referral)
 - [socket.io](https://socket.io/)
 
@@ -44,7 +47,6 @@
 - [jade(pug)](https://pugjs.org/api/getting-started.html)
 
 ##### 模板引擎的讨论
-
  - [是结束讨论nodejs该使用什么模板引擎的时候了](https://cnodejs.org/topic/527f24a6d2b3893f2a31a2e1)
 
 - [大家觉得Node.js中各大模板引擎，哪种好？](https://cnodejs.org/topic/4f2f474bab3b872077086848)
@@ -76,7 +78,7 @@
 ### 相关技能
 #### Git
 - [廖雪峰-Git教程](http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000/)
-- [猴子都能懂得Git教程](http://backlogtool.com/git-guide/cn/)
+- [猴子都能懂的Git教程](http://backlogtool.com/git-guide/cn/)
 
 #### Markdown
 
