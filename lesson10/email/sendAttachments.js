@@ -17,7 +17,7 @@ let transporter = nodemailer.createTransport({
 });
 
 let mailOptions = {
-  from: `"JavaScript之禅" <${account.user}>`, // sender address
+  from: `"cosyer" <${account.user}>`, // sender address
   to: account.to, // list of receivers
   subject: "附件", // Subject line
   // text: 'Hello world?', // plain text body

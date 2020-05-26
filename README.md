@@ -12,6 +12,7 @@
 - Lesson9 - [Koa快速入门教程](/lesson9)
 - Lesson10 - [Node.js使用Nodemailer发送邮件](/lesson10)
 - Lesson11 - [Node爬虫练习](/lesson11)
+- Lesson12 - [Node打造微信个人号机器人](/lesson12)
 
 ## Node相关入门资料
 

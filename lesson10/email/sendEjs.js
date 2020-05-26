@@ -27,7 +27,7 @@ const html = template({
 });
 
 let mailOptions = {
-  from: `"JavaScript之禅" <${account.user}>`, // sender address
+  from: `"cosyer" <${account.user}>`, // sender address
   to: account.to, // list of receivers
   subject: "使用 Ejs", // Subject line
   html: html, // html body
