@@ -6,6 +6,7 @@
 - Lesson3 - [Node模块与npm](/lesson3)
 - Lesson4 - [搭建静态文件服务器](/lesson4)
 - Lesson5 - [Node中的stream (流)](/lesson5)
+- Lesson6 - [Node的readline (逐行读取)](/lesson6)
 
 ## Node相关入门资料
 

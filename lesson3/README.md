@@ -212,7 +212,7 @@ Is this ok? (yes) yes
 
 ```bsah
 $ npm adduser
-Username: liuxing
+Username: cosyer
 Password:
 Email: (this IS public) ogilhinn@gmail.com
 ```
