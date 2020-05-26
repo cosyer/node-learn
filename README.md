@@ -8,6 +8,7 @@
 - Lesson5 - [Node中的stream (流)](/lesson5)
 - Lesson6 - [Node的readline (逐行读取)](/lesson6)
 - Lesson7 - [Node中的网络编程](/lesson7)
+- Lesson8 - [Node操作数据库](/lesson8)
 
 ## Node相关入门资料
 
